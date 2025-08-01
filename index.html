@@ -1,65 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="./src/style.css" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Wishes Picker</title>
     </head>
 
-    <body>
-        <div x-data="navApp()">
-            <nav
-                class="navbar brdr-b"
-                role="navigation"
-                aria-label="main navigation"
-            >
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-brand">
-                        <a class="navbar-item">
-                            <strong class="ml">Vite Alpinejs Starter</strong>
-                        </a>
-                    </div>
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                <a
-                                    class="button is-secondary mr"
-                                    href="https://github.com/dashpilot/vite-alpinejs"
-                                    target="_blank"
-                                >
-                                    Docs
-                                </a>
-                            </div>
+    <body class="base" data-page="wishes" cz-shortcut-listen="true">
+        <div class="wrapper">
+            <main class="content">
+                <div class="profile-form-container">
+                    <form
+                        action="/profile/wishes/"
+                        method="post"
+                        id="wishes-form"
+                        x-data="wishes"
+                    >
+                        <button
+                            class="back-btn"
+                            x-show="wishSelectionInProgress"
+                            @click.prevent="goBack()"
+                            style="display: none"
+                        >
+                            Назад
+                        </button>
+                        <div
+                            class="selection-btn-container"
+                            x-show="categorySelection"
+                            style="display: none"
+                        >
+                            <template
+                                x-for="category in categories"
+                                :key="category"
+                            >
+                                <button
+                                    class="selection-btn"
+                                    x-text="category"
+                                    @click.prevent="selectCategory(category)"
+                                ></button> </template
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Активності</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Бізнес</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Волонтерство</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Ігри</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Кар'єра</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Комп'ютери</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Крафт</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Кудись піти</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Кулінарія</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Лайфстайл</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Мови</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Музика</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Навички</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Напої</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Обмін</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Пригоди</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Проєкти</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Спілкування</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Спорт</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Тварини</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Фестивалі</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Фінанси</button
+                            ><button
+                                class="selection-btn"
+                                x-text="category"
+                                @click.prevent="selectCategory(category)"
+                            >
+                                Шеринг
+                            </button>
                         </div>
-                    </div>
+                        <div
+                            class="selection-btn-container"
+                            x-show="selectedCategory"
+                            style="display: none"
+                        >
+                            <template
+                                x-for="wish in categoryWishes"
+                                :key="wish"
+                            >
+                                <button
+                                    class="selection-btn"
+                                    x-text="wish"
+                                    @click.prevent="selectWish(wish)"
+                                ></button>
+                            </template>
+                        </div>
+                        <div
+                            class="selection-btn-container"
+                            x-show="!wishSelectionInProgress"
+                        >
+                            <template
+                                x-for="wish in selectedWishes"
+                                :key="wish"
+                            >
+                                <button
+                                    class="selection-btn"
+                                    x-text="wish"
+                                    @click.prevent="unselectWish(wish)"
+                                ></button> </template
+                            ><button
+                                class="selection-btn"
+                                x-text="wish"
+                                @click.prevent="unselectWish(wish)"
+                            >
+                                Грати у волейбол</button
+                            ><button
+                                class="selection-btn"
+                                x-text="wish"
+                                @click.prevent="unselectWish(wish)"
+                            >
+                                Зробити фотосесію</button
+                            ><button
+                                class="selection-btn"
+                                x-text="wish"
+                                @click.prevent="unselectWish(wish)"
+                            >
+                                Зустріти захід сонця</button
+                            ><button
+                                class="selection-btn"
+                                x-text="wish"
+                                @click.prevent="unselectWish(wish)"
+                            >
+                                Навчатися англійської</button
+                            ><button
+                                class="selection-btn"
+                                x-text="wish"
+                                @click.prevent="unselectWish(wish)"
+                            >
+                                Фотографувати</button
+                            ><button
+                                class="selection-btn"
+                                x-text="wish"
+                                @click.prevent="unselectWish(wish)"
+                            >
+                                Фотографувати на плівку
+                            </button>
+                            <template
+                                x-for="wish in selectedWishes"
+                                :key="wish"
+                            >
+                                <input
+                                    type="hidden"
+                                    name="wish"
+                                    x-bind:value="wish"
+                                /> </template
+                            ><input
+                                type="hidden"
+                                name="wish"
+                                x-bind:value="wish"
+                                value="Грати у волейбол"
+                            /><input
+                                type="hidden"
+                                name="wish"
+                                x-bind:value="wish"
+                                value="Зробити фотосесію"
+                            /><input
+                                type="hidden"
+                                name="wish"
+                                x-bind:value="wish"
+                                value="Зустріти захід сонця"
+                            /><input
+                                type="hidden"
+                                name="wish"
+                                x-bind:value="wish"
+                                value="Навчатися англійської"
+                            /><input
+                                type="hidden"
+                                name="wish"
+                                x-bind:value="wish"
+                                value="Фотографувати"
+                            /><input
+                                type="hidden"
+                                name="wish"
+                                x-bind:value="wish"
+                                value="Фотографувати на плівку"
+                            />
+                            <button
+                                id="add-wish"
+                                class="selection-btn"
+                                x-show="moreCanBeAdded"
+                                @click.prevent="showCategories()"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="size-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M12 4.5v15m7.5-7.5h-15"
+                                    ></path>
+                                </svg>
+                                <span>Вибрати бажання</span>
+                            </button>
+                        </div>
+                        <input
+                            type="submit"
+                            value="Зберегти"
+                            x-show="formCanBeSubmitted"
+                        />
+                    </form>
                 </div>
-            </nav>
+            </main>
         </div>
-        <div class="container text-center" x-data="cardApp()">
-            <div class="box p-50">
-                <img src="/img/vite-alpine.png" class="w-30" />
-                <h1>Vite & Alpine</h1>
-                <p class="tagline mt-10 mb-50">Starter Template</p>
-                <label class="label mt-25">Your name:</label>
-                <input class="input w-50" type="text" x-model="name" />
-
-                <p class="tagline mt-20" x-text="name"></p>
-                <div class="mt-20 mb-50">
-                    <button
-                        class="button is-link is-medium mt-20 mr"
-                        @click="test"
-                    >
-                        Alert
-                    </button>
-                    <a
-                        class="button is-medium mt-20 ml"
-                        href="https://github.com/dashpilot/vite-alpinejs"
-                        target="_blank"
-                        >Docs</a
-                    >
-                </div>
-            </div>
-        </div>
-        <script type="module" src="./src/main.js"></script>
     </body>
 </html>
