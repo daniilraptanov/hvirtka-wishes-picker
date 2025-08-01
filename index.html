@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wishes Picker</title>
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Wishes Picker</title>
+    </head>
 
-  <body>
-    <div id="app"></div>
-    <script type="module" src="./src/main.js"></script>
-  </body>
+    <body>
+        <div x-data="navApp()">
+            <nav
+                class="navbar brdr-b"
+                role="navigation"
+                aria-label="main navigation"
+            >
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <strong class="ml">Vite Alpinejs Starter</strong>
+                        </a>
+                    </div>
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a
+                                    class="button is-secondary mr"
+                                    href="https://github.com/dashpilot/vite-alpinejs"
+                                    target="_blank"
+                                >
+                                    Docs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="container text-center" x-data="cardApp()">
+            <div class="box p-50">
+                <img src="/img/vite-alpine.png" class="w-30" />
+                <h1>Vite & Alpine</h1>
+                <p class="tagline mt-10 mb-50">Starter Template</p>
+                <label class="label mt-25">Your name:</label>
+                <input class="input w-50" type="text" x-model="name" />
+
+                <p class="tagline mt-20" x-text="name"></p>
+                <div class="mt-20 mb-50">
+                    <button
+                        class="button is-link is-medium mt-20 mr"
+                        @click="test"
+                    >
+                        Alert
+                    </button>
+                    <a
+                        class="button is-medium mt-20 ml"
+                        href="https://github.com/dashpilot/vite-alpinejs"
+                        target="_blank"
+                        >Docs</a
+                    >
+                </div>
+            </div>
+        </div>
+        <script type="module" src="./src/main.js"></script>
+    </body>
 </html>
