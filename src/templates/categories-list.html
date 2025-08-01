@@ -1,0 +1,5 @@
+<div class="selection-btn-container" x-data="categoriesList()">
+    <template x-for="category in categories" :key="category.id">
+        <div class="selection-btn" x-text="category.name"></div>
+    </template>
+</div>

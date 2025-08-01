@@ -1,11 +1,27 @@
 import "./style.css";
 import "./utils.css";
 import Alpine from "alpinejs";
-import nav from "./components/nav.js";
-import card from "./components/card.js";
+import { loadTemplate } from "./utils.js";
+
+import selectedWishes from "./components/selected-wishes.js";
+import categoriesList from "./components/categories-list.js";
 
 window.Alpine = Alpine;
-Alpine.data("navApp", nav);
-Alpine.data("cardApp", card);
 
-Alpine.start();
+Alpine.data("selectedWishes", selectedWishes);
+Alpine.data("categoriesList", categoriesList);
+
+async function init() {
+    await loadTemplate(
+        "./src/templates/selected-wishes.html",
+        "#selected-wishes"
+    );
+    await loadTemplate(
+        "./src/templates/categories-list.html",
+        "#categories-list"
+    );
+
+    Alpine.start();
+}
+
+init();
