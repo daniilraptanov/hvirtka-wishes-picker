@@ -1,0 +1,14 @@
+{
+  "name": "hvirtka-wishes-picker",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^2.9.18"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.9"
+  }
+}
