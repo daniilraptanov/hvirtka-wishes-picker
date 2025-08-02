@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Wishes Picker</title>
+      <script type="module" crossorigin src="/assets/index.306b7ddb.js"></script>
+      <link rel="stylesheet" href="/assets/index.07297ef3.css">
+    </head>
+
+    <body class="base" data-page="wishes" cz-shortcut-listen="true">
+        <div class="wrapper">
+            <main class="content">
+                <div
+                    x-data="wishesPicker()"
+                    class="profile-form-container wishes_page_container"
+                >
+                    <div
+                        id="selected-wishes"
+                        class="wishes_category_list wishes_list_wrapper"
+                    ></div>
+                    <div class="categories_dropdown_wrapper">
+                        <input
+                            type="text"
+                            :placeholder="randomWish.name"
+                            class="wishes_search_input"
+                            @input="searchWishes($event)"
+                        />
+                        <div id="categories-dropdown"></div>
+                    </div>
+                    <div id="wishes-list"></div>
+                    <input
+                        type="submit"
+                        value="Зберегти"
+                        class="wishes_save_button"
+                    />
+                </div>
+            </main>
+        </div>
+    </body>
+    
+</html>
