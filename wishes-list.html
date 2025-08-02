@@ -1,0 +1,10 @@
+<div class="selection-btn-container wishes-list">
+    <template x-for="wish in selected.wishes" :key="wish.id">
+        <button
+            class="selection-btn wish-card"
+            :class="{ 'selectedWish': isWishAdded(wish) }"
+            x-text="wish.name"
+            @click="addOrRemoveWish(wish)"
+        ></button>
+    </template>
+</div>

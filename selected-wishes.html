@@ -1,0 +1,9 @@
+<div class="list selected_wishes_list">
+    <template x-for="wish in userWishes" :key="wish.id">
+        <a
+            class="selection-btn selected_wish_label"
+            x-text="wish.name"
+            @click="addOrRemoveWish(wish)"
+        ></a>
+    </template>
+</div>
