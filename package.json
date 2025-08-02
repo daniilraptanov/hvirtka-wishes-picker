@@ -3,10 +3,14 @@
     "version": "1.0.0",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "postbuild": "mkdir -p dist/src/templates && cp src/templates/*.html dist/src/templates/",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "devDependencies": {
-        "vite": "^2.9.18"
+        "vite": "^2.9.18",
+        "gh-pages": "^6.0.0"
     },
     "dependencies": {
         "alpinejs": "^3.14.9",
