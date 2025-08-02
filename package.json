@@ -9,6 +9,7 @@
         "vite": "^2.9.18"
     },
     "dependencies": {
-        "alpinejs": "^3.14.9"
+        "alpinejs": "^3.14.9",
+        "uuid": "^11.1.0"
     }
 }

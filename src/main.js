@@ -3,13 +3,11 @@ import "./utils.css";
 import Alpine from "alpinejs";
 import { loadTemplate } from "./utils.js";
 
-import selectedWishes from "./components/selected-wishes.js";
-import categoriesList from "./components/categories-dropdown.js";
+import wishesPicker from "./components/wishes-picker.js";
 
 window.Alpine = Alpine;
 
-Alpine.data("selectedWishes", selectedWishes);
-Alpine.data("categoriesDropdown", categoriesList);
+Alpine.data("wishesPicker", wishesPicker);
 
 async function init() {
     await loadTemplate(
@@ -20,6 +18,7 @@ async function init() {
         "./src/templates/categories-dropdown.html",
         "#categories-dropdown"
     );
+    await loadTemplate("./src/templates/wishes-list.html", "#wishes-list");
 
     Alpine.start();
 }

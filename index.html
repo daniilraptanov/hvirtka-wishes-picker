@@ -10,7 +10,10 @@
     <body class="base" data-page="wishes" cz-shortcut-listen="true">
         <div class="wrapper">
             <main class="content">
-                <div class="profile-form-container wishes_page_container">
+                <div
+                    x-data="wishesPicker()"
+                    class="profile-form-container wishes_page_container"
+                >
                     <div
                         id="selected-wishes"
                         class="wishes_category_list wishes_list_wrapper"
@@ -23,6 +26,7 @@
                         />
                         <div id="categories-dropdown"></div>
                     </div>
+                    <div id="wishes-list"></div>
                     <input
                         type="submit"
                         value="Зберегти"
