@@ -21,8 +21,9 @@
                     <div class="categories_dropdown_wrapper">
                         <input
                             type="text"
-                            placeholder="Введіть щось, наприклад Футбол"
+                            :placeholder="randomWish.name"
                             class="wishes_search_input"
+                            @input="searchWishes($event)"
                         />
                         <div id="categories-dropdown"></div>
                     </div>

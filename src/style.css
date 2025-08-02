@@ -1397,7 +1397,7 @@ body.conversation_page {
     border: 1px solid var(--orchid-800);
 }
 .wishes_search_input::placeholder {
-    color: var(--orchid-200);
+    color: var(--orchid-100);
     opacity: 0.7;
 }
 
