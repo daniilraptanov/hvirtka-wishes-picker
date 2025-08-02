@@ -10,10 +10,24 @@
     <body class="base" data-page="wishes" cz-shortcut-listen="true">
         <div class="wrapper">
             <main class="content">
-                <div class="profile-form-container">
-                    <div id="categories-list"></div>
-                    <div id="selected-wishes"></div>
-                    <input type="submit" value="Зберегти" />
+                <div class="profile-form-container wishes_page_container">
+                    <div
+                        id="selected-wishes"
+                        class="wishes_category_list wishes_list_wrapper"
+                    ></div>
+                    <div class="categories_dropdown_wrapper">
+                        <input
+                            type="text"
+                            placeholder="Введіть щось, наприклад Футбол"
+                            class="wishes_search_input"
+                        />
+                        <div id="categories-dropdown"></div>
+                    </div>
+                    <input
+                        type="submit"
+                        value="Зберегти"
+                        class="wishes_save_button"
+                    />
                 </div>
             </main>
         </div>

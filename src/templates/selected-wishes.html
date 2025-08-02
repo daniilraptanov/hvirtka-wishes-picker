@@ -1,5 +1,5 @@
-<div class="selection-btn-container" x-data="selectedWishes()">
+<div class="list selected_wishes_list" x-data="selectedWishes()">
     <template x-for="wish in selectedWishes" :key="wish.id">
-        <div class="selection-btn" x-text="wish.name"></div>
+        <a class="selection-btn" x-text="wish.name"></a>
     </template>
 </div>
