@@ -1,25 +1,29 @@
-<button
-    id="add-wish"
-    class="selection-btn categories_dropdown"
-    x-data="categoriesDropdown()"
->
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
-        ></path>
-    </svg>
-    <span>Вибрати бажання</span>
-
-    <!-- <template x-for="category in categories" :key="category.id">
-        <div class="selection-btn" x-text="category.name"></div>
-    </template> -->
-</button>
+<div x-data="categoriesDropdown()" class="categories_dropdown">
+    <button id="add-wish" class="selection-btn" @click="open = !open">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+            ></path>
+        </svg>
+        <span x-text="selected.name"></span>
+    </button>
+    <div x-show="open" @click.outside="open = false" class="dropdown_menu">
+        <template x-for="category in categories" :key="category.id">
+            <div
+                @click="selectCategory(category)"
+                class="dropdown_item"
+                style="padding: 0.5rem; cursor: pointer"
+                :class="{ 'bg': selected.id === category.id }"
+                x-text="category.name"
+            ></div>
+        </template>
+    </div>
+</div>

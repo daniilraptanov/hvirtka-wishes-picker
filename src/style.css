@@ -1412,6 +1412,38 @@ body.conversation_page {
 }
 
 .categories_dropdown {
-    width: 320px;
+    min-width: 320px;
     align-self: flex-end;
+    position: relative;
+}
+
+.dropdown_menu {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--orchid-800) transparent;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-lighter);
+    border: 1px solid var(--orchid-800);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+}
+.dropdown_menu::-webkit-scrollbar-track {
+    color: #000;
+}
+
+.dropdown_item {
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-lighter);
+    cursor: pointer;
+}
+
+.dropdown_item:hover,
+.dropdown_item.bg {
+    background-color: var(--orchid-800);
 }
