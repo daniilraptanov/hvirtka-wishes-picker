@@ -1458,6 +1458,14 @@ body.conversation_page {
     scrollbar-color: var(--orchid-800) transparent;
 }
 
+.empty_wishes_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0.7;
+}
+
 .selectedWish {
     background-color: var(--orchid-800) !important;
 }

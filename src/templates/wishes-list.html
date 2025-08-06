@@ -1,4 +1,10 @@
-<div class="selection-btn-container wishes-list">
+<div
+    class="selection-btn-container wishes-list"
+    :class="{ 'empty_wishes_list': selected.wishes.length === 0 }"
+>
+    <h2 x-show="userWishes.length === 0 && !selected.wishes.length">
+        Додайте хоча б одне бажання
+    </h2>
     <template x-for="wish in selected.wishes" :key="wish.id">
         <button
             class="selection-btn wish-card"
